@@ -12,9 +12,9 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-            <h1 class="mb-2">Solusi untuk kamu yang ingin ke Perpustakaan tapi mager</h1>
+            <h1 class="mb-2">Solusi untuk kamu yang ingin minjam buku di Perpustakaan tapi mager</h1>
             <div class="d-flex">
-              <a href="<?= base_url('index.php/admin/dashboard/index');?>" class="btn-get-started">Login</a>
+              <a href="<?= base_url('index.php/auth/login');?>" class="btn-get-started">Login</a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
@@ -98,7 +98,7 @@
 
           <div class="col-lg-12  content" data-aos="fade-up" data-aos-delay="100">
             <p style="text-align: justify;">
-              Selamat datang di Perpus Digital, aplikasi yang menyederhanakan cara kamu meminjam buku. Dengan aplikasi ini, kamu bisa melihat ketersediaan buku, melakukan peminjaman, dan mengembalikannya dengan cepat, semuanya melalui satu platform digital. Aplikasi ini dikembangkan untuk memenuhi syarat Uji Kompetensi, dengan fokus utama pada efisiensi dan kemudahan akses untuk proses sirkulasi buku.
+              Selamat datang di Perpustakaan Digital, aplikasi yang menyederhanakan cara kamu meminjam buku. Dengan aplikasi ini, kamu bisa melihat ketersediaan buku, melakukan peminjaman, dan mengembalikannya dengan cepat, semuanya melalui satu platform digital. Aplikasi ini dikembangkan untuk memenuhi syarat Uji Kompetensi, dengan fokus utama pada efisiensi dan kemudahan akses untuk proses sirkulasi buku.
             </p>
 
           </div>
@@ -163,8 +163,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Sirkulasi</h2>
+        <p>Temukan buku favorit kamu dan ajukan peminjaman sekarang</p>
       </div><!-- End Section Title -->
 
       <div class="container">
