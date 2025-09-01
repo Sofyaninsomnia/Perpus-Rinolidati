@@ -8,6 +8,8 @@
  </footer>
  </div>
  </div>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.all.min.js"></script>
  <script>
      function updateTime() {
          const now = new Date();
@@ -20,6 +22,20 @@
      }
      setInterval(updateTime, 1000);
      updateTime(); // Initial call
+ </script>
+ <script>
+     $(document).ready(function() {
+         const login = "<?= $this->session->flashdata('login_berhasil'); ?>";
+
+         if (login) {
+             Swal.fire({
+                 title: 'Sukses!',
+                 text: login,
+                 icon: 'success',
+                 confirmButtonText: 'OK'
+             });
+         }
+     });
  </script>
  <script src="<?= base_url(); ?>assets/admin/js/feather-icons/feather.min.js"></script>
  <script src="<?= base_url(); ?>assets/admin/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

@@ -12,4 +12,5 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/admin/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/admin/css/app.css">
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/admin/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css">
 </head>

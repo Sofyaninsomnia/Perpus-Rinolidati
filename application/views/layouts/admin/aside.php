@@ -110,10 +110,10 @@
                             <div class="avatar me-1">
                                 <img src="<?= base_url(); ?>assets/admin/images/avatar/avatar-s-1.png" alt="" srcset="">
                             </div>
-                            <div class="d-none d-md-block d-lg-inline-block">Hallo, Admin</div>
+                            <div class="d-none d-md-block d-lg-inline-block">Hallo, <?= $this->session->username; ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="<?= base_url(); ?>"><i data-feather="log-out"></i> Logout</a>
+                            <a class="dropdown-item" href="<?= base_url('index.php/auth/logout'); ?>"><i data-feather="log-out"></i> Logout</a>
                         </div>
                     </li>
                 </ul>

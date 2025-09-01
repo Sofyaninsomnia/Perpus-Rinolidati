@@ -14,7 +14,7 @@
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
             <h1 class="mb-2">Solusi untuk kamu yang ingin minjam buku di Perpustakaan tapi mager</h1>
             <div class="d-flex">
-              <a href="<?= base_url('index.php/auth/login');?>" class="btn-get-started">Login</a>
+              <a href="<?= base_url('index.php/auth/');?>" class="btn-get-started">Login</a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
