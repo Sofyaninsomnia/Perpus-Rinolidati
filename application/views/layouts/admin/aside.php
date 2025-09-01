@@ -10,11 +10,11 @@
 
                     <li class='sidebar-title'>Home</li>
 
+                    <?php $current_url = $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $this->uri->segment(3); ?>
 
+                    <li class="sidebar-item <?= ($current_url == 'admin/dashboard/index') ? 'active' : '' ?> ">
 
-                    <li class="sidebar-item active ">
-
-                        <a href="index.html" class='sidebar-link'>
+                        <a href="<?= base_url('index.php/admin/dashboard/index'); ?>" class='sidebar-link'>
                             <i data-feather="home" width="20"></i>
                             <span>Dashboard</span>
                         </a>
@@ -28,9 +28,9 @@
 
 
 
-                    <li class="sidebar-item ">
+                    <li class="sidebar-item <?= ($current_url == 'admin/kategori/index') ? 'active' : '' ?> ">
 
-                        <a href="#" class='sidebar-link'>
+                        <a href="<?= base_url('index.php/admin/kategori/index'); ?>" class='sidebar-link'>
                             <i data-feather="grid" width="20"></i>
                             <span>Kategori</span>
                         </a>
@@ -39,7 +39,7 @@
 
 
 
-                    <li class="sidebar-item  ">
+                    <li class="sidebar-item <?= ($current_url == 'admin/biografi/index') ? 'active' : '' ?> ">
 
                         <a href="form-layout.html" class='sidebar-link'>
                             <i data-feather="book-open" width="20"></i>
@@ -51,7 +51,7 @@
 
 
 
-                    <li class="sidebar-item  ">
+                    <li class="sidebar-item <?= ($current_url == 'admin/keanggotaan/index') ? 'active' : '' ?> ">
 
                         <a href="form-editor.html" class='sidebar-link'>
                             <i data-feather="users" width="20"></i>
@@ -63,7 +63,7 @@
 
 
 
-                    <li class="sidebar-item  ">
+                    <li class="sidebar-item <?= ($current_url == 'admin/sirkulasi/index') ? 'active' : '' ?> ">
 
                         <a href="form-editor.html" class='sidebar-link'>
                             <i data-feather="book" width="20"></i>
@@ -75,7 +75,7 @@
 
 
 
-                    <li class="sidebar-item  ">
+                    <li class="sidebar-item <?= ($current_url == 'admin/rating/index') ? 'active' : '' ?> ">
 
                         <a href="table.html" class='sidebar-link'>
                             <i data-feather="star" width="20"></i>

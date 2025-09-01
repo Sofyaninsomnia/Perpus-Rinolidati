@@ -1,5 +1,5 @@
 <?php
-class Dashboard extends CI_Controller {
+class Kategori extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -8,9 +8,11 @@ class Dashboard extends CI_Controller {
             $this->session->set_flashdata('error_message', 'Anda tidak diizinkan untuk mengakses halaman ini.');
             redirect('auth/login');
         }
+        $this->load->model('Kategori_model');
     }
 
     public function index(){
-        $this->load->view('admin/dashboard');
+        $data['kategori'] = $this->Kategori_model->get()->result();
+        $this->load->view('admin/kategori', $data);
     }
 }

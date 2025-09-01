@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="<?= base_url(); ?>assets/custom/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -64,9 +65,25 @@
                 </button>
             </div>
         </div>
-        <span class="agreement"><a href="<?= base_url();?>">Kembali</a></span>
+        <span class="agreement"><a href="<?= base_url(); ?>">Kembali</a></span>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const errorMessage = "<?= $this->session->flashdata('error_message'); ?>";
+
+            if (errorMessage) {
+                Swal.fire({
+                    title: 'Kesalahan!',
+                    text: errorMessage,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
