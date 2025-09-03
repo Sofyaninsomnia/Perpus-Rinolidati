@@ -21,7 +21,7 @@
          document.getElementById('current-time').textContent = now.toLocaleTimeString('id-ID', options);
      }
      setInterval(updateTime, 1000);
-     updateTime(); // Initial call
+     updateTime(); 
  </script>
  <script>
      $(document).ready(function() {
@@ -29,7 +29,7 @@
 
          if (login) {
              Swal.fire({
-                 title: 'Sukses!',
+                 title: 'Login Sukses!',
                  text: login,
                  icon: 'success',
                  confirmButtonText: 'OK'
@@ -37,6 +37,35 @@
          }
      });
  </script>
+ <script>
+     $(document).ready(function() {
+         const successMessage = "<?= $this->session->flashdata('success'); ?>";
+
+         if (successMessage) {
+             Swal.fire({
+                 title: 'Berhasil!',
+                 text: successMessage,
+                 icon: 'success',
+                 confirmButtonText: 'OK'
+             });
+         }
+     });
+ </script>
+ <script>
+     $(document).ready(function() {
+         const errorMessage = "<?= $this->session->flashdata('error'); ?>";
+
+         if (errorMessage) {
+             Swal.fire({
+                 title: 'Error!',
+                 html: errorMessage,
+                 icon: 'error',
+                 confirmButtonText: 'OK'
+             });
+         }
+     });
+ </script>
+
  <script src="<?= base_url(); ?>assets/admin/js/feather-icons/feather.min.js"></script>
  <script src="<?= base_url(); ?>assets/admin/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
  <script src="<?= base_url(); ?>assets/admin/js/app.js"></script>

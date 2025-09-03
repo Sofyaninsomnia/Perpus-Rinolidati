@@ -41,7 +41,7 @@
 
                     <li class="sidebar-item <?= ($current_url == 'admin/biografi/index') ? 'active' : '' ?> ">
 
-                        <a href="form-layout.html" class='sidebar-link'>
+                        <a href="<?= base_url('index.php/admin/biografi/index'); ?>" class='sidebar-link'>
                             <i data-feather="book-open" width="20"></i>
                             <span>Management Buku</span>
                         </a>
