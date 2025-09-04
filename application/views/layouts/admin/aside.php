@@ -53,7 +53,7 @@
 
                     <li class="sidebar-item <?= ($current_url == 'admin/keanggotaan/index') ? 'active' : '' ?> ">
 
-                        <a href="form-editor.html" class='sidebar-link'>
+                        <a href="<?= base_url('index.php/admin/keanggotaan/index'); ?>" class='sidebar-link'>
                             <i data-feather="users" width="20"></i>
                             <span>Management Anggota</span>
                         </a>

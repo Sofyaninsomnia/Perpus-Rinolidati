@@ -14,11 +14,13 @@
                         </div>
                         <?php foreach ($kategori as $data) : ?>
                             <form action="<?= base_url('index.php/admin/kategori/update_kategori/' . $data->id); ?>" method="POST">
-                                <div class="form-group">
-                                    <label for="nama_kategori">Nama Kategori</label>
-                                    <input type="text" name="nama_kategori" class="form-control" value="<?php echo $data->nama_kategori ?>" placeholder="Nama Kategori">
+                                <div class="form-control">
+                                    <div class="form-group">
+                                        <label for="nama_kategori">Nama Kategori</label>
+                                        <input type="text" name="nama_kategori" class="form-control" value="<?php echo $data->nama_kategori ?>" placeholder="Nama Kategori">
+                                    </div>
                                 </div>
-                                <div class="d-flex gap-1">
+                                <div class="d-flex mt-2 gap-1">
                                     <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                                     <button class="btn btn-secondary btn-sm" type="reset">Reset</button>
                                     <a href="<?= base_url('index.php/admin/kategori/index'); ?>" class="btn btn-danger btn-sm">Kembali</a>

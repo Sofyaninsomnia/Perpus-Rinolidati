@@ -13,11 +13,13 @@
                             <h3 class="card-title">Form input kategori</h3>
                         </div>
                         <form action="<?= base_url('index.php/admin/kategori/create_kategori'); ?>" method="POST">
-                            <div class="form-group">
-                                <label for="nama_kategori">Nama Kategori</label>
-                                <input type="text" name="nama_kategori" class="form-control" placeholder="Nama Kategori" required>
+                            <div class="form-control">
+                                <div class="form-group">
+                                    <label for="nama_kategori">Nama Kategori</label>
+                                    <input type="text" name="nama_kategori" class="form-control" placeholder="Nama Kategori" required>
+                                </div>
                             </div>
-                            <div class="d-flex gap-1">
+                            <div class="d-flex mt-2 gap-1">
                                 <button class="btn btn-primary btn-sm" type="submit">Submit</button>
                                 <button class="btn btn-secondary btn-sm" type="reset">Reset</button>
                                 <a href="<?= base_url('index.php/admin/kategori/index'); ?>" class="btn btn-danger btn-sm">Kembali</a>
