@@ -1,5 +1,6 @@
-<?php 
-class Biografi extends CI_Controller {
+<?php
+class Biografi extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
@@ -12,64 +13,77 @@ class Biografi extends CI_Controller {
         $this->load->model('Kategori_model');
     }
 
-    public function index(){
+    public function index()
+    {
         $data['buku']   = $this->Biografi_model->get_all_buku_with_kategori();
         $this->load->view('admin/biografi', $data);
     }
 
-    public function form_buku(){
+    public function form_buku()
+    {
         $data['kategori_list']  = $this->Kategori_model->get();
         $this->load->view('admin/formAdd_buku', $data);
     }
 
-    public function create_buku(){
-        $config['upload_path']      = './uploads/';
-        $config['allowed_types']    = 'jpg|png|jpeg';
-        $config['max_size']         = 4080;
-        $config['file_name']        = 'cover_' . time();
+    public function create_buku()
+    {
+        try {
+            $config['upload_path']      = './uploads/';
+            $config['allowed_types']    = 'jpg|png|jpeg';
+            $config['max_size']         = 4080;
+            $config['file_name']        = 'cover_' . time();
 
-        $this->load->library('upload', $config);
+            $this->load->library('upload', $config);
 
-        $data_buku = [
-            'judul'            => $this->input->post('judul'),
-            'penulis'          => $this->input->post('penulis'),
-            'penerbit'         => $this->input->post('penerbit'),
-            'tahun_terbit'     => $this->input->post('tahun_terbit'),
-            'deskripsi'        => $this->input->post('deskripsi')
-        ];
+            $data_buku = [
+                'judul'            => $this->input->post('judul'),
+                'penulis'          => $this->input->post('penulis'),
+                'penerbit'         => $this->input->post('penerbit'),
+                'tahun_terbit'     => $this->input->post('tahun_terbit'),
+                'deskripsi'        => $this->input->post('deskripsi')
+            ];
 
-        if ($this->upload->do_upload('cover')) {
-            $upload_data = $this->upload->data();
-            $data_buku['cover'] = $upload_data['file_name'];
-        }else {
-            $error = $this->upload->display_errors();
-            $this->session->set_flashdata('error', $error);
-        }
+            if ($this->upload->do_upload('cover')) {
+                $upload_data = $this->upload->data();
+                $data_buku['cover'] = $upload_data['file_name'];
 
-        $kategori_ids = $this->input->post('kategori');
-        $buku_id = $this->Biografi_model->insert_buku($data_buku);
 
-        if (!empty($kategori_ids)) {
-            foreach ($kategori_ids as $kategori_id) {
-                $data_relasi = array(
-                    'buku_id' => $buku_id,
-                    'kategori_id' => $kategori_id
-                );
-                $this->Biografi_model->insert_buku_kategori($data_relasi);
+                $kategori_ids = $this->input->post('kategori');
+                $buku_id = $this->Biografi_model->insert_buku($data_buku);
+
+                if (!empty($kategori_ids)) {
+                    foreach ($kategori_ids as $kategori_id) {
+                        $data_relasi = array(
+                            'buku_id' => $buku_id,
+                            'kategori_id' => $kategori_id
+                        );
+                        $this->Biografi_model->insert_buku_kategori($data_relasi);
+                    }
+                }
+
+                $this->session->set_flashdata('success', 'Buku berhasil ditambahkan!');
+                redirect('admin/biografi/index');
+            } else {
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('error', $error);
+                redirect('admin/biografi/form_buku');
             }
+        } catch (\Exception $e) {
+            $error_message = $e->getMessage();
+            $this->session->set_flashdata('error', $error_message);
+            return redirect('admin/biografi/index');
         }
-
-        $this->session->set_flashdata('success', 'Buku berhasil ditambahkan!');
-        redirect('admin/biografi/index');
     }
 
-    // public function form_edit($id){
-    //     $where = ['id'  => $id];
+    public function form_edit($id)
+    {
+        $data['buku']           = $this->Biografi_model->get_buku_by_id($id);
+        $data['kategori_list']  = $this->Kategori_model->get();
+        $this->load->view('admin/formEdit_buku', $data);
+    }
 
-        
-    // }
-
-    public function delete_buku($id){
+    public function delete_buku($id)
+    {
         $where = ['id'  => $id];
         $this->Biografi_model->hapus_data($where, 'buku');
         $this->session->set_flashdata('success', 'Data buku berhail dihapus!');
