@@ -28,6 +28,10 @@ class Biografi_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    
+    public function delete_buku_kategori($buku_id) {
+    return $this->db->where('buku_id', $buku_id)->delete('buku_kategori');
+}
 
     public function get_buku_by_id($id)
     {
@@ -44,7 +48,7 @@ class Biografi_model extends CI_Model
     public function update_buku($id, $data_buku)
     {
         $this->db->where('id', $id);
-        $this->db->update('buku', $data_buku);
+        return $this->db->update('buku', $data_buku);
     }
 
     public function hapus_data($where, $table)

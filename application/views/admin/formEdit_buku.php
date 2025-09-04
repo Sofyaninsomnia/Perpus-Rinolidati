@@ -12,7 +12,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Form input Buku</h3>
                         </div>
-                        <form action="<?= base_url('index.php/admin/biografi/update_buku'); ?>" method="POST" class="form-input" enctype="multipart/form-data">
+                        <form action="<?= base_url('index.php/admin/biografi/update_buku', $buku->id); ?>" method="POST" class="form-input" enctype="multipart/form-data">
                             <label for="kategori">Kategori</label>
                             <div class="form-group d-flex gap-2">
                                 <?php $buku_kategori_ids = explode(',', $buku->kategori_id); ?>
@@ -49,7 +49,7 @@
                                         <img src="<?= base_url('uploads/' . $buku->cover); ?>" alt="Cover Buku" style="max-width: 150px; border-radius: 8px;">
                                     </div>
                                 <?php endif; ?>
-                                <input type="file" name="cover" class="form-control" required>
+                                <input type="file" name="cover" class="form-control" >
                             </div>
                             <div class="d-flex gap-1">
                                 <button class="btn btn-primary btn-sm" type="submit">Submit</button>
