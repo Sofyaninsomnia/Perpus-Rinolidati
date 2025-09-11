@@ -34,7 +34,7 @@ class Biografi extends CI_Controller
             $this->form_validation->set_rules('tahun_terbit', 'Tahun terbit', 'required|date');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
 
-            if ($this->form_validation->run() == FALSE){
+            if ($this->form_validation->run() == FALSE) {
                 $this->session->set_flashdata('error', 'Gagal menambahkan buku');
                 redirect('admin/biografi/index');
             }
@@ -91,11 +91,67 @@ class Biografi extends CI_Controller
         $this->load->view('admin/formEdit_buku', $data);
     }
 
-    public function update_buku($id){
+    public function update_buku($id)
+    {
         try {
-            
-        }catch (\Exception $e){
-            
+
+            $this->form_validation->set_rules('judul', 'Judul', 'required|min_length[6]|max_length[150]');
+            $this->form_validation->set_rules('penulis', 'Penulis', 'required|min_length[4]|max_length[100]');
+            $this->form_validation->set_rules('penerbit', 'Penerbit', 'required|min_length[4]|max_length[100]');
+            $this->form_validation->set_rules('tahun_terbit', 'Tahun Terbit', 'required|exact_length[4]|numeric');
+            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->session->set_flashdata('error', validation_errors());
+                redirect('admin/biografi/index');
+            }
+
+            $data_buku = [
+                'judul'        => $this->input->post('judul'),
+                'penulis'      => $this->input->post('penulis'),
+                'penerbit'     => $this->input->post('penerbit'),
+                'tahun_terbit' => $this->input->post('tahun_terbit'),
+                'deskripsi'    => $this->input->post('deskripsi')
+            ];
+
+            if (!empty($_FILES['cover']['name'])) {
+                $config['upload_path']      = './uploads/';
+                $config['allowed_types']    = 'jpg|png|jpeg';
+                $config['max_size']         = 4080;
+                $config['file_name']        = 'cover_' . time();
+
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('cover')) {
+                    $upload_data = $this->upload->data();
+                    $data_buku['cover'] = $upload_data['file_name'];
+                } else {
+                    $this->session->set_flashdata('error', $this->upload->display_errors());
+                    redirect('admin/biografi/index');
+                }
+            }
+
+            $this->Biografi_model->update_buku($id, $data_buku);
+
+            $kategori_ids = $this->input->post('kategori');
+            if (!empty($kategori_ids)) {
+                $this->Biografi_model->delete_buku_kategori($id);
+
+                foreach ($kategori_ids as $kategori_id) {
+                    $data_relasi = [
+                        'buku_id'     => $id,
+                        'kategori_id' => $kategori_id
+                    ];
+                    $this->Biografi_model->insert_buku_kategori($data_relasi);
+                }
+            }
+
+            $this->session->set_flashdata('success', 'Buku berhasil diperbarui!');
+            redirect('admin/biografi/index');
+        } catch (\Exception $e) {
+            $error_message = $e->getMessage();
+            $this->session->set_flashdata('error', $error_message);
+            return redirect('admin/biografi/index');    
         }
     }
 
@@ -105,5 +161,11 @@ class Biografi extends CI_Controller
         $this->Biografi_model->hapus_data($where, 'buku');
         $this->session->set_flashdata('success', 'Data buku berhail dihapus!');
         return redirect('admin/biografi/index');
+    }
+
+    public function show_buku($id){
+        $data['buku']           = $this->Biografi_model->get_buku_by_id($id);
+        $data['kategori_list']  = $this->Kategori_model->get();
+        $this->load->view('admin/show_buku', $data);
     }
 }

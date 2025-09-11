@@ -14,7 +14,7 @@
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
             <h1 class="mb-2">Solusi untuk kamu yang ingin minjam buku di Perpustakaan tapi mager</h1>
             <div class="d-flex">
-              <a href="<?= base_url('index.php/auth/');?>" class="btn-get-started">Login</a>
+              <a href="<?= base_url('index.php/auth/'); ?>" class="btn-get-started">Login</a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
@@ -173,110 +173,37 @@
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Card</li>
-            <li data-filter=".filter-branding">Web</li>
+            <?php foreach ($list_kategori as $kategori): ?>
+              <li data-filter=".filter-<?php echo strtolower(str_replace(' ', '-', $kategori->nama_kategori)); ?>">
+                <?php echo $kategori->nama_kategori; ?>
+              </li>
+            <?php endforeach; ?>
           </ul><!-- End Portfolio Filters -->
           <form action="">
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Cari buku..." >
-            <button class="btn btn-primary" type="submit" id="button-subscribe">Cari</button>
-          </div>
+              <input type="text" class="form-control" placeholder="Cari buku...">
+              <button class="btn btn-primary" type="submit" id="button-subscribe">Cari</button>
+            </div>
           </form>
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-portrait-1.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-portrait-1.webp" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+            <?php foreach ($buku as $data) : ?>
+              <?php
+              $kategori_list = explode(', ', $data->kategori_nama ?? '');
+              ?>
+              <div class="col-lg-4 col-md-6 portfolio-item isotope-item
+            <?php foreach ($kategori_list as $kategori) : ?>
+                filter-<?php echo strtolower(str_replace(' ', '-', $kategori)); ?>
+            <?php endforeach; ?>
+        ">
+                <img src="<?= base_url('uploads/' . $data->cover); ?>" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4><?php echo $data->judul ?></h4>
+                  <a href="<?= base_url('index.php/home/show_buku/' . $data->id); ?>" class="preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
               </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-1.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-1.webp" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-3.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-3.webp" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-4.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-4.webp" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-portrait-2.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-portrait-2.webp" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-portrait-3.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-portrait-3.webp" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-7.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-7.webp" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-8.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-8.webp" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="<?= base_url(); ?>assets/home/img/portfolio/portfolio-9.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="<?= base_url(); ?>assets/home/img/portfolio/portfolio-9.webp" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-          </div><!-- End Portfolio Container -->
+            <?php endforeach; ?>
+          </div>
 
         </div>
 

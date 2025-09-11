@@ -42,7 +42,7 @@
                                     <textarea name="deskripsi" rows="5" class="form-control" placeholder="Deskripsi buku..."></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="cover">Cover buku</label>
+                                    <label for="cover">Cover buku</label><small class="text-danger"> Pastikan poster foto A4/potrait, tidak boleh landscape</small>
                                     <input type="file" name="cover" class="form-control" required>
                                 </div>
                             </div>

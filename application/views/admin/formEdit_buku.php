@@ -12,11 +12,11 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Form input Buku</h3>
                         </div>
-                        <form action="<?= base_url('index.php/admin/biografi/update_buku', $buku->id); ?>" method="POST" class="form-input" enctype="multipart/form-data">
+                        <form action="<?= base_url('index.php/admin/biografi/update_buku/' . $buku->id); ?>" method="POST" class="form-input" enctype="multipart/form-data">
                             <div class="form-control">
                                 <label for="kategori">Kategori</label>
                                 <div class="form-group d-flex gap-2">
-                                    <?php $buku_kategori_ids = explode(',', $buku->kategori_id); ?>
+                                    <?php $buku_kategori_ids = explode(',', $buku->kategori_id ?? ''); ?>
                                     <?php foreach ($kategori_list as $kategori) :
                                         $is_checked = in_array($kategori->id, $buku_kategori_ids); ?>
                                         <input type="checkbox" name="kategori[]" value="<?php echo $kategori->id; ?>" id="kategori_<?php echo $kategori->id; ?>" <?php echo $is_checked ? 'checked' : ''; ?>>

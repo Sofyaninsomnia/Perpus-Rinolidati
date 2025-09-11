@@ -38,7 +38,7 @@
                                                 <td><?php echo $data->judul ?></td>
                                                 <td>
                                                     <?php
-                                                    $kategori_array = explode(', ', $data->kategori_nama);
+                                                    $kategori_array = explode(', ', $data->kategori_nama  ?? '');
                                                     foreach ($kategori_array as $kategori) {
                                                         echo '<span class="badge bg-secondary me-1 mt-1">' . $kategori . '</span>';
                                                     }
@@ -50,7 +50,7 @@
                                                 <td style="text-align: center;">
                                                     <div class="d-flex justify-content-center align-items-center gap-1">
                                                         <a href="<?= base_url('index.php/admin/biografi/form_edit/' . $data->id); ?>" class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
-                                                        <a href="" class="btn btn-warning btn-sm"><i data-feather="eye"></i></a>
+                                                        <a href="<?= base_url('index.php/admin/biografi/show_buku/' . $data->id); ?>" class="btn btn-warning btn-sm"><i data-feather="eye"></i></a>
                                                         <form class="delete-form" action="<?= base_url('index.php/admin/biografi/delete_buku/' . $data->id); ?>" method="POST">
                                                             <button class="btn btn-danger btn-sm"><i data-feather="trash"></i></button>
                                                         </form>

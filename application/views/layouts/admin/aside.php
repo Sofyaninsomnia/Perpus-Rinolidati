@@ -65,21 +65,9 @@
 
                     <li class="sidebar-item <?= ($current_url == 'admin/sirkulasi/index') ? 'active' : '' ?> ">
 
-                        <a href="form-editor.html" class='sidebar-link'>
+                        <a href="<?= base_url('index.php/admin/sirkulasi/index'); ?>" class='sidebar-link'>
                             <i data-feather="book" width="20"></i>
                             <span>Sirkulasi</span>
-                        </a>
-
-
-                    </li>
-
-
-
-                    <li class="sidebar-item <?= ($current_url == 'admin/rating/index') ? 'active' : '' ?> ">
-
-                        <a href="table.html" class='sidebar-link'>
-                            <i data-feather="star" width="20"></i>
-                            <span>Rating</span>
                         </a>
 
 
