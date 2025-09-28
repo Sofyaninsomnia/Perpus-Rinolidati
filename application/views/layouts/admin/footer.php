@@ -1,7 +1,7 @@
  <footer>
      <div class="footer clearfix mb-0 text-muted">
          <div class="d-flex flex-column justify-content-center align-items-center">
-             <p>Copyright &copy; Perpustakaan Rinolidati. All right reserve</p>
+             <p>Copyright ngasal &copy; Perpustakaan Rinolidati. All right reserve</p>
              <p class="timestamp">WAKTU AKSES: <span id="current-time"></span></p>
          </div>
      </div>

@@ -11,6 +11,17 @@ class Dashboard extends CI_Controller {
     }
 
     public function index(){
-        $this->load->view('admin/dashboard');
+        $total_buku = $this->db->count_all('buku');
+        $total_anggota = $this->db->count_all('user');
+        $total_kategori = $this->db->count_all('kategori');
+        $total_pinjam = $this->db->count_all('sirkulasi');
+
+        $data = [
+            'buku'        => $total_buku,
+            'anggota'     => $total_anggota,
+            'kategori'    => $total_kategori,
+            'pinjam'      => $total_pinjam
+        ];
+        $this->load->view('admin/dashboard', $data);
     }
 }

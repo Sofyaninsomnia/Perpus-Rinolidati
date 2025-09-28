@@ -16,7 +16,7 @@
                             <div class="d-flex flex-column justify-content-center align-items-center ">
                                 <i data-feather="book-open" style="width: 50px; height: 50px;"></i>
                                 <div class="d-flex align-items-center mt-4">
-                                    <h4><span>Total Buku: </span>1234</h4>
+                                    <h4><span>Total Buku: </span><?php echo $buku ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             <div class="d-flex flex-column justify-content-center align-items-center ">
                                 <i data-feather="users" style="width: 50px; height: 50px;"></i>
                                 <div class="d-flex align-items-center mt-4">
-                                    <h4><span>Anggota: </span>1234</h4>
+                                    <h4><span>Anggota: </span><?php echo $anggota ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                             <div class="d-flex flex-column justify-content-center align-items-center ">
                                 <i data-feather="grid" style="width: 50px; height: 50px;"></i>
                                 <div class="d-flex align-items-center mt-4">
-                                    <h4><span>Kategori: </span>1234</h4>
+                                    <h4><span>Kategori: </span><?php echo $kategori ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -50,9 +50,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column justify-content-center align-items-center ">
-                                <i data-feather="star" style="width: 50px; height: 50px;"></i>
+                                <i data-feather="book" style="width: 50px; height: 50px;"></i>
                                 <div class="d-flex align-items-center mt-4">
-                                    <h4><span>Rating: </span>1234</h4>
+                                    <h4><span>Pinjaman: </span><?php echo $pinjam ?></h4>
                                 </div>
                             </div>
                         </div>

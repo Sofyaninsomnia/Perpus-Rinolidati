@@ -18,4 +18,11 @@ class Home extends CI_Controller {
         $data['kategori_list'] = $this->Kategori_model->get();
         $this->load->view('home/show_buku', $data);
     }
+    
+    public function search(){
+        $keyword = $this->input->post('keyword');
+        $data['buku'] = $this->Sirkulasi_model->get_keyword($keyword);
+        $data['list_kategori'] = $this->Kategori_model->get();
+        $this->load->view('home/index', $data);
+    }
 }

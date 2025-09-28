@@ -179,12 +179,12 @@
               </li>
             <?php endforeach; ?>
           </ul><!-- End Portfolio Filters -->
-          <form action="">
+          <!-- <form action="<?= base_url('index.php/home/search'); ?>" method="POST">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Cari buku...">
-              <button class="btn btn-primary" type="submit" id="button-subscribe">Cari</button>
+              <input type="text" name="keyword" class="form-control" placeholder="Cari buku...">
+              <button class="btn btn-outline-primary" type="submit" id="button-subscribe"><i class="bi bi-search"></i></button>
             </div>
-          </form>
+          </form> -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
             <?php foreach ($buku as $data) : ?>

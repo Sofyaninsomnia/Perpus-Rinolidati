@@ -28,9 +28,9 @@ class Biografi extends CI_Controller
     public function create_buku()
     {
         try {
-            $this->form_validation->set_rules('judul', 'Judul', 'required|min_length[6]|max_length[150]');
-            $this->form_validation->set_rules('penulis', 'Penulis', 'required|min_length[4]|max_length[100]');
-            $this->form_validation->set_rules('penerbit', 'Penerbit', 'required|min_length[4]|max_length[100]');
+            $this->form_validation->set_rules('judul', 'Judul', 'required');
+            $this->form_validation->set_rules('penulis', 'Penulis', 'required');
+            $this->form_validation->set_rules('penerbit', 'Penerbit', 'required');
             $this->form_validation->set_rules('tahun_terbit', 'Tahun terbit', 'required|date');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
 
@@ -95,9 +95,9 @@ class Biografi extends CI_Controller
     {
         try {
 
-            $this->form_validation->set_rules('judul', 'Judul', 'required|min_length[6]|max_length[150]');
-            $this->form_validation->set_rules('penulis', 'Penulis', 'required|min_length[4]|max_length[100]');
-            $this->form_validation->set_rules('penerbit', 'Penerbit', 'required|min_length[4]|max_length[100]');
+            $this->form_validation->set_rules('judul', 'Judul', 'required');
+            $this->form_validation->set_rules('penulis', 'Penulis', 'required');
+            $this->form_validation->set_rules('penerbit', 'Penerbit', 'required');
             $this->form_validation->set_rules('tahun_terbit', 'Tahun Terbit', 'required|exact_length[4]|numeric');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
 
